@@ -1,0 +1,6 @@
+Backdrop#hidden x 92,702 ops/sec ±1.91% (84 runs sampled)
+Div x 135,988 ops/sec ±0.89% (87 runs sampled)
+Task#hidden x 104,558 ops/sec ±0.87% (92 runs sampled)
+Task#visible x 1,842 ops/sec ±0.91% (88 runs sampled)
+TaskEdit#hidden x 51,102 ops/sec ±4.35% (78 runs sampled)
+TaskListContainer x 1,466 ops/sec ±2.23% (84 runs sampled)

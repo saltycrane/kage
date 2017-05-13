@@ -1,0 +1,31 @@
+// This is copied from the Firebase console so it can be saved to git.
+// TODO: write a script to set these rules.
+// export default {
+//   rules: {
+//     tasks: {
+//       ".read": true,
+//       $task: {
+//         // Allow authenticated users to create new data. Only creator can edit data or delete data.
+//         ".write": "(!data.exists() && auth != null) || (data.child('createdBy').val() === auth.uid)",
+//       }
+//     }
+//   }
+// };
+{
+  "rules": {
+    "tasks": {
+      "$userId": {
+        // Allow access only to the owner of the tasks
+        ".read": "auth.uid === $userId",
+        ".write": "(auth != null && auth.uid === $userId)",
+      }
+    },
+    "users": {
+      ".read": true,
+      "$userId": {
+        // Allow creating new users and updating user info only by the owner
+        ".write": "!data.exists() || (auth != null && auth.uid === $userId)",
+      },
+    }
+  }
+}
