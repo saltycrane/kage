@@ -6,7 +6,7 @@ import * as actions from "../actions";
 import * as selectors from "../reducers";
 import type { ApiStatus } from "../types";
 import Status from "./Status";
-import { ButtonPrimary, FlexRow, Form, FormGroup, H4, Input, Label } from "./common";
+import { AuthLabel, ButtonPrimary, FlexRow, Form, FormGroup, H4, Input } from "./common";
 
 const INITIAL_STATE = {
   passwordOld: "",
@@ -35,7 +35,7 @@ class UserChangePasswordContainer extends React.Component {
         <hr />
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label>Old Password</Label>
+            <AuthLabel>Old Password</AuthLabel>
             <Input
               name="passwordOld"
               onChange={this.handleChange}
@@ -44,7 +44,7 @@ class UserChangePasswordContainer extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label>New Password</Label>
+            <AuthLabel>New Password</AuthLabel>
             <Input
               name="passwordNew"
               onChange={this.handleChange}
@@ -53,7 +53,7 @@ class UserChangePasswordContainer extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label>Confirm Password</Label>
+            <AuthLabel>Confirm Password</AuthLabel>
             <Input
               name="passwordConfirm"
               onChange={this.handleChange}

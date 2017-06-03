@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import * as selectors from "../reducers";
 import Link from "./Link";
 import RadioButtons from "./RadioButtons";
-import { A, FlexItem, FlexRow, Span, TaskLabel } from "./common";
+import { A, Div, FlexRow, Span, TaskLabel } from "./common";
 
 type Props = {|
   query: {
@@ -26,25 +26,25 @@ const TaskFilterContainer = ({ query, query: { status, tag }, tags, totalCount }
     <div>
       <hr />
       <FlexRow center vbottom wrap mb={10}>
-        <FlexItem pb={5}>
+        <Div mx={10} pb={5}>
           <TaskLabel>status</TaskLabel>
           <RadioButtons
             onChange={handleFilterChange(query, "status")}
             options={["all", "active", "completed"].map(x => [x, x])}
             selected={status}
           />
-        </FlexItem>
-        <FlexItem ml={20} pb={5}>
+        </Div>
+        <Div mx={10} pb={5}>
           <TaskLabel>tag</TaskLabel>
           <RadioButtons
             onChange={handleFilterChange(query, "tag")}
             options={["all", ...tags].map(x => [x, x])}
             selected={tag}
           />
-        </FlexItem>
-        <FlexItem ml={20} pb={10}>
+        </Div>
+        <Div mx={10} pb={20}>
           <Link href="/"><A><Span bold fs={12}>reset all</Span></A></Link>
-        </FlexItem>
+        </Div>
       </FlexRow>
     </div>
   );

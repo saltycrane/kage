@@ -9,11 +9,11 @@ import TaskCountContainer from "../components/TaskCountContainer";
 import TaskFilterContainer from "../components/TaskFilterContainer";
 import TaskListContainer from "../components/TaskListContainer";
 import TaskSorterContainer from "../components/TaskSorterContainer";
-import { Div, FlexRow } from "../components/common";
+import { FlexRow } from "../components/common";
 import appEnhancer from "../lib/appEnhancer";
 
 const DEFAULT_QUERY = {
-  sortBy: "createdAt",
+  sort: "updatedAt:desc",
   status: "all",
   tag: "all",
 };
@@ -29,7 +29,6 @@ class TaskListPage extends React.Component {
         <TaskAddContainer />
         <TaskFilterContainer query={query} />
         <FlexRow between vbottom mb={5}>
-          <Div w={170} />
           <TaskCountContainer query={query} />
           <TaskSorterContainer query={query} />
         </FlexRow>

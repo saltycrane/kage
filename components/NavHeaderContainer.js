@@ -22,35 +22,28 @@ const NavHeaderContainer = ({ currentUser, isIndex = false, showModal, signOut }
   if (currentUser && !currentUser.isAnonymous) {
     const { email, providerId, uid } = currentUser;
     authLinks = (
-      <span>
+      <FlexRow vbaseline wrap>
         {providerId === "password"
           ? <Link href={`/users/edit?id=${uid}`}><UserEmailLink>{email}</UserEmailLink></Link>
           : <UserEmail>{email}</UserEmail>}
-        <FakeA
-          onClick={() => {
-            signOut();
-            Router.push("/");
-          }}
-        >
-          Sign Out
-        </FakeA>
-      </span>
+        <FakeA onClick={() => signOut() && Router.push("/")}>Sign Out</FakeA>
+      </FlexRow>
     );
   } else {
     authLinks = (
-      <span>
-        <FakeA onClick={() => showModal("signin")}>Sign in</FakeA>
-        <FakeA onClick={() => showModal("signup")}>Sign up</FakeA>
-      </span>
+      <FlexRow wrap>
+        <FakeA onClick={() => showModal("signin") && Router.push("/")}>Sign in</FakeA>
+        <FakeA onClick={() => showModal("signup") && Router.push("/")}>Sign up</FakeA>
+      </FlexRow>
     );
   }
 
   return (
     <Navbar>
       <Container>
-        <FlexRow between>
+        <FlexRow between wrap>
           {isIndex
-            ? <Logo outline>Kage</Logo>
+            ? <Link href="/about"><LogoLink outline>Kage</LogoLink></Link>
             : <Link href="/"><LogoLink outline>Kage</LogoLink></Link>}
           {authLinks}
         </FlexRow>
@@ -75,24 +68,19 @@ const aCss = css`
   font-weight: 100;
   margin-left: 20px;
   text-decoration: none !important;
+  white-space: nowrap;
   &:hover {
     color: #ddd !important;
   }
 `;
-const logoCss = css`
+const FakeA = styled.span`${aCss}`;
+const LogoLink = styled(Button)`
   color: #fff !important;
   font-size: 14px;
   font-variant-caps: small-caps;
+  margin-right: 20px;
   padding: 2px 6px 2px 20px !important;
 `;
-const FakeA = styled.span`${aCss}`;
-const Logo = styled(Button)`
-  ${logoCss}
-  &:hover {
-    background-color: rgba(0, 0, 0, 0) !important;
-  }
-`;
-const LogoLink = styled(Button)`${logoCss}`;
 const UserEmail = styled.span`
   color: #fff;
   font-size: 12px;

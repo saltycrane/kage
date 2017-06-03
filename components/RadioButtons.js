@@ -1,8 +1,9 @@
 /* @flow */
 import React from "react";
+import styled from "styled-components";
 
 import { COLORS } from "../constants";
-import { Button, ButtonGroup } from "./common";
+import { Button as CommonButton } from "./common";
 
 type Props = {
   onChange: (selected: string) => any,
@@ -17,21 +18,24 @@ export default class RadioButtons extends React.Component {
     const { onChange, options, selected } = this.props;
 
     return (
-      <ButtonGroup size="sm">
+      <div>
         {options.map(([value, label]) => (
           <Button
             key={value}
             onClick={() => onChange(value)}
-            style={
-              selected === value
-                ? { border: `2px solid ${COLORS.primary}`, boxShadow: "none", zIndex: 1 }
-                : { boxShadow: "none" }
-            }
+            size="sm"
+            style={selected === value ? { border: `2px solid ${COLORS.primary}`, zIndex: 1 } : {}}
           >
             {label}
           </Button>
         ))}
-      </ButtonGroup>
+      </div>
     );
   }
 }
+
+const Button = styled(CommonButton)`
+  margin-left: -1px;
+  margin-bottom: 10px;
+  position: relative;
+`;

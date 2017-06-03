@@ -1,23 +1,14 @@
 /* @flow */
 import Document, { Head, Main, NextScript } from "next/document";
 import React from "react";
-import styleSheet from "styled-components/lib/models/StyleSheet";
+import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }) {
-    // https://github.com/zeit/next.js/blob/2.1.1/examples/with-styled-components/pages/_document.js
-    const page = renderPage();
-    const styles = (
-      <style
-        dangerouslySetInnerHTML={{
-          __html: styleSheet.rules().map(rule => rule.cssText).join("\n"),
-        }}
-      />
-    );
-    return { ...page, styles };
-  }
-
   render() {
+    const sheet = new ServerStyleSheet();
+    const main = sheet.collectStyles(<Main />);
+    const styleTags = sheet.getStyleElement();
+
     return (
       <html>
         <Head>
@@ -26,9 +17,12 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           />
+          {styleTags}
         </Head>
         <body>
-          <Main />
+          <div className="root">
+            {main}
+          </div>
           <NextScript />
         </body>
       </html>

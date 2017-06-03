@@ -61,6 +61,7 @@ export const TaskListContainer = ({
         />
         <Task
           task={task}
+          onBump={() => updateTask(task.id, {}, auth)}
           onDelete={() => deleteTask(task.id, auth)}
           onEdit={() => editTask(task.id)}
           onToggle={() => updateTask(task.id, { completed: !task.completed }, auth)}
@@ -75,7 +76,7 @@ export default connect(
   (state, ownProps) => ({
     auth: selectors.getAuth(state),
     editingId: selectors.getEditingId(state),
-    tasks: selectors.getFilteredTasks(state)(ownProps.query),
+    tasks: selectors.getFilteredTasks(state, ownProps),
     status: selectors.getUpdateTaskStatus(state),
     updatingId: selectors.getUpdatingId(state),
   }),

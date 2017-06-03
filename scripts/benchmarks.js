@@ -17,21 +17,23 @@ const Div = () => <div />;
 
 const TaskHidden = () => (
   <Task
+    onBump={() => {}}
     onDelete={() => {}}
     onEdit={() => {}}
     onToggle={() => {}}
     show={false}
-    task={{ createdAt: 1, id: "aaa", tags: ["atag"], text: "some text" }}
+    task={{ createdAt: 1494802317018, id: "aaa", tags: ["atag"], text: "some text" }}
   />
 );
 
 const TaskVisible = () => (
   <Task
+    onBump={() => {}}
     onDelete={() => {}}
     onEdit={() => {}}
     onToggle={() => {}}
     show={true}
-    task={{ createdAt: 1, id: "aaa", tags: ["atag"], text: "some text" }}
+    task={{ createdAt: 1494802317018, id: "aaa", tags: ["atag"], text: "some text" }}
   />
 );
 
@@ -42,7 +44,7 @@ const TaskEditHidden = () => (
     onSubmit={() => {}}
     show={false}
     status={{ error: null, loading: false, success: false }}
-    task={{ createdAt: 1, id: "aaa", tags: ["atag"], text: "some text" }}
+    task={{ createdAt: 1494802317018, id: "aaa", tags: ["atag"], text: "some text" }}
   />
 );
 
@@ -55,7 +57,7 @@ const TaskListContainerBasic = () => (
     editingId={null}
     query={{}}
     status={{ error: null, loading: false, success: false }}
-    tasks={[{ createdAt: 1, id: "aaa", tags: ["atag"], text: "some text" }]}
+    tasks={[{ createdAt: 1494802317018, id: "aaa", tags: ["atag"], text: "some text" }]}
     updateTask={() => {}}
     updatingId={null}
   />

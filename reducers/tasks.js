@@ -1,5 +1,4 @@
 /* @flow */
-import memoize from "lodash.memoize";
 import { createSelector } from "reselect";
 
 import {
@@ -127,6 +126,22 @@ const _filterByTag = (tasks, tag) => {
   return tasks.filter(task => task.tags && task.tags.includes(tag));
 };
 
+const _sortTasks = (tasks, sort) => {
+  const [sortBy, sortDir] = sort.split(":");
+  return tasks.sort((a, b) => {
+    // `|| 0` is to handle case where property is undefined because data is not filled in
+    const aa = a[sortBy] || 0;
+    const bb = b[sortBy] || 0;
+    let result = 0;
+    if (aa < bb) {
+      result = -1;
+    } else if (aa > bb) {
+      result = 1;
+    }
+    return sortDir === "asc" ? result : -1 * result;
+  });
+};
+
 export const getTags = createSelector(_getTasks, tasks => {
   const nestedTags = tasks.map(task => task.tags).filter(Boolean);
   const tags = nestedTags.reduce((memo, tags) => [...memo, ...tags], []);
@@ -135,17 +150,18 @@ export const getTags = createSelector(_getTasks, tasks => {
 
 export const getEditingId = (state: Object) => state.editingId;
 
-export const getFilteredTasks = createSelector(_getTasks, tasks =>
-  memoize(query => {
-    const { sortBy, status, tag } = query;
-    let filteredTasks = _filterByStatus(tasks, status);
-    filteredTasks = _filterByTag(filteredTasks, tag);
-
-    // `|| 0` is to handle case where property is undefined because data is not filled in
-    return filteredTasks.sort((a, b) => {
-      return (b[sortBy] || 0) - (a[sortBy] || 0);
-    });
-  }),
+// If support for multiple tasks lists is needed in the future,
+// make a factory function that returns the getFilteredTasks selector.
+// See https://github.com/reactjs/reselect/tree/v3.0.1#sharing-selectors-with-props-across-multiple-components
+export const getFilteredTasks = createSelector(
+  _getTasks,
+  (_, props) => props.query,
+  (tasks, query) => {
+    const { sort, status, tag } = query;
+    const filteredByStatus = _filterByStatus(tasks, status);
+    const filteredByTag = _filterByTag(filteredByStatus, tag);
+    return _sortTasks(filteredByTag, sort);
+  },
 );
 
 export const getTask = (state: Object, id: string) => {

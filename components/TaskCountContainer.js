@@ -27,6 +27,6 @@ const Container = styled.div`
 `;
 
 export default connect((state, ownProps) => ({
-  count: selectors.getFilteredTasks(state)(ownProps.query).length,
+  count: selectors.getFilteredTasks(state, ownProps).length,
   totalCount: selectors.getTotalCount(state),
 }))(TaskCountContainer);

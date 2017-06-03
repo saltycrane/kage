@@ -1,6 +1,5 @@
 /* @flow */
 import axios from "axios";
-import getTime from "date-fns/get_time";
 
 import { memoize } from "../redux-api-memoization";
 import type { Auth } from "../types";
@@ -20,6 +19,12 @@ export const EDIT_TASK = "EDIT_TASK";
 export const RETRIEVE_TASK = "RETRIEVE_TASK";
 export const RETRIEVE_TASKS = "RETRIEVE_TASKS";
 export const UPDATE_TASK = "UPDATE_TASK";
+
+const _retrieveTask = (id: string, uid: string, token: string) => ({
+  type: RETRIEVE_TASK,
+  getPromise: () => axios.get(`${BASE_URL}/${uid}/${id}.json`, { params: { auth: token } }),
+  id,
+});
 
 export const createTask = (text: string, tags: Array<string>, auth: Auth) => async (
   dispatch: Function,
@@ -41,22 +46,19 @@ export const createTask = (text: string, tags: Array<string>, auth: Auth) => asy
     createdAt: { ".sv": "timestamp" }, // firebase server-generated timestamp
     tags: tags.sort(),
     text,
+    updatedAt: { ".sv": "timestamp" }, // firebase server-generated timestamp
   };
 
   // Dispatch the action to create the task, then dispatch the action to retrieve
-  // the task immediately after.
+  // the task immediately afterwards to get the server generated timestamps.
   return dispatch({
     type: CREATE_TASK,
     getPromise: () =>
       // $FlowFixMe
       axios.post(`${BASE_URL}/${uid}.json`, data, { params }).then(response => {
         const id = response.data.name;
-        dispatch({
-          type: RETRIEVE_TASK,
-          // $FlowFixMe
-          getPromise: () => axios.get(`${BASE_URL}/${uid}/${id}.json`, { params }),
-          id,
-        });
+        // $FlowFixMe
+        dispatch(_retrieveTask(id, uid, token));
         return response;
       }),
     text,
@@ -102,7 +104,7 @@ export const retrieveTasks = memoize((auth: Auth) => {
   };
 });
 
-export const updateTask = (id: string, update: Update, auth: Auth) => {
+export const updateTask = (id: string, update: Update, auth: Auth) => (dispatch: Function) => {
   const { token, uid } = auth;
   if (!uid) {
     return;
@@ -111,7 +113,7 @@ export const updateTask = (id: string, update: Update, auth: Auth) => {
 
   let { completed, completedAt, tags, ...rest } = update;
   if (completed && !completedAt) {
-    completedAt = getTime(new Date());
+    completedAt = Date.now();
   }
   if (!completed) {
     completedAt = null;
@@ -124,10 +126,14 @@ export const updateTask = (id: string, update: Update, auth: Auth) => {
     completedAt,
   };
 
-  return {
+  return dispatch({
     type: UPDATE_TASK,
-    getPromise: () => axios.patch(`${BASE_URL}/${uid}/${id}.json`, data, { params }),
+    getPromise: () =>
+      axios.patch(`${BASE_URL}/${uid}/${id}.json`, data, { params }).then(response => {
+        // $FlowFixMe
+        dispatch(_retrieveTask(id, uid, token));
+      }),
     id,
     update: { ...update, completedAt },
-  };
+  });
 };

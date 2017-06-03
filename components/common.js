@@ -1,6 +1,5 @@
 /* @flow */
 import RSButton from "reactstrap/lib/Button";
-import RSButtonGroup from "reactstrap/lib/ButtonGroup";
 import RSCard from "reactstrap/lib/Card";
 import RSInput from "reactstrap/lib/Input";
 import RSLabel from "reactstrap/lib/Label";
@@ -35,6 +34,10 @@ export const base = css`
   ${props => props.mr && "margin-right: " + props.mr + "px;"}
   ${props => props.mt && "margin-top: " + props.mt + "px;"}
   ${props => props.mb && "margin-bottom: " + props.mb + "px;"}
+  ${props => props.mx && css`
+    margin-left: ${props.mx}px;
+    margin-right: ${props.mx}px;
+  `}
   ${props => props.pl && "padding-left: " + props.pl + "px;"}
   ${props => props.pr && "padding-right: " + props.pr + "px;"}
   ${props => props.pt && "padding-top: " + props.pt + "px;"}
@@ -52,11 +55,15 @@ export const A = styled.a`
   cursor: pointer;
 `;
 
-export const Button = styled(RSButton)`
-  border-radius: 0 !important;
+export const AuthLabel = styled(RSLabel)`
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
 `;
 
-export const ButtonGroup = styled(RSButtonGroup)`
+export const Button = styled(RSButton)`
+  border-radius: 0 !important;
 `;
 
 export const ButtonPrimary = styled(RSButton)`
@@ -92,6 +99,7 @@ export const FlexRow = styled.div`
   ${base}
   display: flex;
   flex-direction: row;
+  ${props => props.around && "justify-content: space-around;"}
   ${props => props.between && "justify-content: space-between;"}
   ${props => props.center && "justify-content: center;"}
   ${props => props.right && "justify-content: flex-end;"}
@@ -100,10 +108,6 @@ export const FlexRow = styled.div`
   ${props => props.vcenter && "align-items: center;"}
   ${props => props.vtop && "align-items: flex-start;"}
   ${props => props.wrap && "flex-wrap: wrap;"}
-`;
-
-export const FlexItem = styled.div`
-  ${base}
 `;
 
 export const H3 = styled.h3`

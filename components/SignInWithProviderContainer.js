@@ -20,27 +20,26 @@ const SignInWithProviderContainer = ({
   <div>
     <Separator><Or>or</Or></Separator>
     <FlexRow center>
-      {false &&
-        <div>
-          <div>Sign in with</div>
-          <Button onClick={signInWithGithub}>Github</Button>
-          <Button onClick={signInWithGoogle}>Google</Button>
-          <Button onClick={signInWithTwitter}>Twitter</Button>
-        </div>}
-      <Button onClick={signInWithGoogle}>
-        <GoogleIcon alt="" height="18" width="18" src="/static/google-icon.svg" />
-        Sign in with Google
-      </Button>
+      <div>
+        <Button onClick={signInWithGithub}>
+          <Icon alt="" height="18" width="18" src="/static/github-icon.svg" />
+          Sign in with Github
+        </Button>
+        <Button onClick={signInWithGoogle}>
+          <Icon alt="" height="18" width="18" src="/static/google-icon.svg" />
+          Sign in with Google
+        </Button>
+      </div>
     </FlexRow>
   </div>
 );
 
 const Button = styled(CommonButton)`
-  margin: 10px 15px 0 0;
+  margin: 15px 15px 5px 0;
   padding-bottom: 7px;
   padding-top: 9px;
 `;
-const GoogleIcon = styled.img`
+const Icon = styled.img`
   margin: -3px 14px 0 -4px;
 `;
 const Or = styled.span`

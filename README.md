@@ -1,4 +1,4 @@
-# Kage
+# [Kage](https://kage.saltycrane.com)
 
 Yet another task manager built with
 [Firebase](https://firebase.google.com/),
@@ -7,9 +7,8 @@ Yet another task manager built with
 [Redux](https://github.com/reactjs/redux),
 [styled-components](https://github.com/styled-components/styled-components),
 [Reactstrap](https://reactstrap.github.io/) [(Bootstrap 4 alpha)](https://v4-alpha.getbootstrap.com/),
-[Flow](https://flow.org/),
-[Prettier](https://github.com/prettier/prettier),
-and deployed using [now](https://zeit.co/now).
+[Flow](https://flow.org/), and
+[Prettier](https://github.com/prettier/prettier).
 
 ### Notes
  - Uses Firebase password authentication, Google authentication, and anonymous authentication when a user does not sign in.
@@ -22,7 +21,12 @@ and deployed using [now](https://zeit.co/now).
  - Flow has a lot of pain points but in-editor feedback is useful and it helps me write simpler code.
  - Prettier is great.
 
+### Try it
+[https://kage.saltycrane.com](https://kage.saltycrane.com)
+
 ### Run the dev server
+
+All the commands below were run with Node.js 6.10 and yarn 0.24 on OS X 10.11.
 
     $ git clone https://github.com/saltycrane/kage.git
     $ cd kage
@@ -30,16 +34,8 @@ and deployed using [now](https://zeit.co/now).
     $ yarn dev
     $ # open http://localhost:3000 in the browser
 
-### Deploy to cloud using now
-
-    $ # install now from https://zeit.co/download
-    $ git clone https://github.com/saltycrane/kage.git
-    $ cd kage
-    $ yarn
-    $ now
-
 ### Run some component benchmarks
-Benchmarking code was copied from @threehams
+Benchmarking code was copied from [threehams](https://github.com/threehams)
 
     $ git clone https://github.com/saltycrane/kage.git
     $ cd kage
@@ -61,3 +57,19 @@ This doesn't seem to give me the right results. If anyone has any tips, let me k
     $ cd kage
     $ yarn
     $ yarn prettier
+
+### Export a static site
+
+    $ git clone git@github.com:saltycrane/kage.git
+    $ cd kage
+    $ yarn
+    $ yarn export
+    $ # serve contents of the `/out` directory
+
+### Deploy to cloud using now
+
+    $ # install now from https://zeit.co/download
+    $ git clone https://github.com/saltycrane/kage.git
+    $ cd kage
+    $ yarn
+    $ now

@@ -10,12 +10,12 @@ import SignInWithProviderContainer from "./SignInWithProviderContainer";
 import Status from "./Status";
 import {
   A,
+  AuthLabel,
   ButtonPrimary,
   FlexRow,
   Form,
   FormGroup,
   Input,
-  Label,
   Modal,
   ModalBody,
   ModalHeader,
@@ -53,7 +53,7 @@ class SignInContainer extends React.Component {
         <ModalBody>
           <Form onSubmit={this.handleSignIn}>
             <FormGroup>
-              <Label>Email</Label>
+              <AuthLabel>Email</AuthLabel>
               <Input
                 name="email"
                 onChange={this.handleChange}
@@ -63,7 +63,7 @@ class SignInContainer extends React.Component {
               />
             </FormGroup>
             <FormGroup>
-              <Label>Password</Label>
+              <AuthLabel>Password</AuthLabel>
               <Input
                 name="password"
                 onChange={this.handleChange}
@@ -94,8 +94,8 @@ class SignInContainer extends React.Component {
     const { signIn } = this.props;
     const { email, password } = this.state;
 
-    await signIn(email, password);
-    this.setState({ email: "", password: "" });
+    const resp = await signIn(email, password);
+    resp && this.setState({ email: "", password: "" });
   };
 }
 
@@ -107,8 +107,5 @@ export default connect(
   {
     hideModal: actions.hideModal,
     signIn: actions.signIn,
-    signInWithGithub: actions.signInWithGithub,
-    signInWithGoogle: actions.signInWithGoogle,
-    signInWithTwitter: actions.signInWithTwitter,
   },
 )(SignInContainer);

@@ -50,7 +50,8 @@ export const getCurrentUser = (state: Object) => authSelectors.getCurrentUser(st
 export const getToken = (state: Object) => authSelectors.getToken(state.auth);
 // tasks
 export const getEditingId = (state: Object) => tasksSelectors.getEditingId(state.tasks);
-export const getFilteredTasks = (state: Object) => tasksSelectors.getFilteredTasks(state.tasks);
+export const getFilteredTasks = (state: Object, props: Object) =>
+  tasksSelectors.getFilteredTasks(state.tasks, props);
 export const getTags = (state: Object) => tasksSelectors.getTags(state.tasks);
 export const getTask = (state: Object, id: string) => tasksSelectors.getTask(state.tasks, id);
 export const getTotalCount = (state: Object) => tasksSelectors.getTotalCount(state.tasks);

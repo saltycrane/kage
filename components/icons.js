@@ -62,6 +62,20 @@ export const CheckboxIcon = ({
   </svg>
 );
 
+export const ChevronDownIcon = ({ onClick, stroke = COLORS.primary, style = {} }: Props) => (
+  <svg
+    width="14"
+    height="14"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    onClick={onClick}
+    style={{ cursor: "pointer", ...style }}
+  >
+    <line x1="1" y1="5" x2="7" y2="10" stroke={stroke} strokeLinecap="round" strokeWidth="1.5" />
+    <line x1="7" y1="10" x2="13" y2="5" stroke={stroke} strokeLinecap="round" strokeWidth="1.5" />
+  </svg>
+);
+
 export const PencilIcon = ({ onClick, stroke = COLORS.primary, style = {} }: Props) => (
   <svg
     width="14"

@@ -1,7 +1,5 @@
 /* @flow */
 
-export const DATETIME_FORMAT = "YYYY/M/D";
-
 export const COLORS = {
   gray: "#cccccc",
   dark: "#333",

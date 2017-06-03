@@ -1,15 +1,16 @@
 /* @flow */
-import format from "date-fns/format";
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 
-import { PencilIcon, XIcon } from "./icons";
-import { DATETIME_FORMAT } from "../constants";
+import { COLORS } from "../constants";
+import { formatDate } from "../lib/util";
 import type { Task as TaskType } from "../types";
 import Checkbox from "./Checkbox";
 import { A as ACommon, Card, CardBlock as CommonCardBlock, FlexRow, Span } from "./common";
+import { PencilIcon, XIcon } from "./icons";
 
 type Props = {|
+  onBump: Function,
   onDelete: Function,
   onEdit: Function,
   onToggle: Function,
@@ -17,7 +18,7 @@ type Props = {|
   task: TaskType,
 |};
 
-const Task = ({ onDelete, onEdit, onToggle, show, task }: Props) => {
+const Task = ({ onBump, onDelete, onEdit, onToggle, show, task }: Props) => {
   if (!show) {
     return null;
   }
@@ -33,15 +34,20 @@ const Task = ({ onDelete, onEdit, onToggle, show, task }: Props) => {
         <CardBlock>
           <FlexRow between vtop>
             <Metadata>
-              Created: {format(task.createdAt, DATETIME_FORMAT)}
+              Created: {formatDate(task.createdAt)}
               {task.completedAt &&
                 <Span ml={20}>
-                  Completed: {format(task.completedAt, DATETIME_FORMAT)}
+                  Completed: {formatDate(task.completedAt)}
                 </Span>}
             </Metadata>
             <div>
-              <PencilIcon onClick={onEdit} style={{ marginRight: 10 }} />
-              <XIcon onClick={onDelete} />
+              <ToBeIcon onClick={onBump} title="bump the updated timestamp for sorting purposes">
+                Bump
+              </ToBeIcon>
+              <IconWrapper title="edit (or double-click task)">
+                <PencilIcon onClick={onEdit} />
+              </IconWrapper>
+              <IconWrapper title="delete"><XIcon onClick={onDelete} /></IconWrapper>
             </div>
           </FlexRow>
           <Checkbox
@@ -70,13 +76,11 @@ function linkify(text) {
 const A = styled(ACommon)`
   ${props => props.theme.isDeleted && "color: rgba(255, 0, 0, 0.8) !important;"}
 `;
-const TaskCard = styled(Card)`
-  background-color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.04)" : "white")};
-  border-color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.121569)")};
-  margin-bottom: 15px;
-`;
 const CardBlock = styled(CommonCardBlock)`
-  padding: 12px 20px 15px 20px;
+  padding: 12px 5px 15px 20px;
+`;
+const IconWrapper = styled.span`
+  margin-right: 15px;
 `;
 const Metadata = styled.div`
   color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : "#999")};
@@ -88,9 +92,24 @@ const Tags = styled.span`
   font-weight: 400;
   text-transform: uppercase;
 `;
+const TaskCard = styled(Card)`
+  background-color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.04)" : "white")};
+  border-color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.121569)")};
+  margin-bottom: 15px;
+`;
 const Text = styled.span`
   color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : "#292b2c")};
   font-weight: 200;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+`;
+const ToBeIcon = styled.span`
+  color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : COLORS.primary)};
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 20px;
+  vertical-align: 2px;
 `;
 
 export default Task;

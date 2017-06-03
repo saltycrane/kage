@@ -8,12 +8,12 @@ import type { ApiStatus, Auth, CurrentUser, SelectedModal } from "../types";
 import SignInWithProviderContainer from "./SignInWithProviderContainer";
 import Status from "./Status";
 import {
+  AuthLabel,
   ButtonPrimary,
   FlexRow,
   Form,
   FormGroup,
   Input,
-  Label,
   Modal,
   ModalBody,
   ModalHeader,
@@ -57,7 +57,7 @@ class SignInUpModalContainer extends React.Component {
         <ModalBody>
           <Form onSubmit={this.handleSubmit}>
             <FormGroup>
-              <Label>Email</Label>
+              <AuthLabel>Email</AuthLabel>
               <Input
                 name="email"
                 getRef={c => (this.email = c)}
@@ -68,11 +68,11 @@ class SignInUpModalContainer extends React.Component {
             </FormGroup>
             {false &&
               <FormGroup>
-                <Label>Username</Label>
+                <AuthLabel>Username</AuthLabel>
                 <Input name="username" type="text" value={username} onChange={this.handleChange} />
               </FormGroup>}
             <FormGroup>
-              <Label>Password</Label>
+              <AuthLabel>Password</AuthLabel>
               <Input
                 name="password"
                 type="password"
@@ -117,8 +117,11 @@ class SignInUpModalContainer extends React.Component {
     } else {
       newUser = await signUp(email, password);
     }
-    const usernameNotImplementedYet = `user${Date.now().toString()}`;
-    createUser(newUser, usernameNotImplementedYet);
+    if (newUser) {
+      const usernameNotImplementedYet = `user${Date.now().toString()}`;
+      createUser(newUser, usernameNotImplementedYet);
+      this.setState({ email: "", password: "" });
+    }
   };
 }
 

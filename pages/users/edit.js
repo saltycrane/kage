@@ -1,5 +1,7 @@
 /* @flow */
+import Router from "next/router";
 import React from "react";
+import { connect } from "react-redux";
 
 import * as actions from "../../actions";
 import Layout from "../../components/Layout";
@@ -7,21 +9,22 @@ import UserChangePasswordContainer from "../../components/UserChangePasswordCont
 import UserEditContainer from "../../components/UserEditContainer";
 import { Col, Row } from "../../components/common";
 import appEnhancer from "../../lib/appEnhancer";
-import redirect from "../../lib/redirect";
 import * as selectors from "../../reducers";
 
 class UserEditPage extends React.Component {
   static async getInitialProps({ dispatch, getState, query: { id }, res }) {
-    const currentUser = selectors.getCurrentUser(getState());
-    if (!currentUser || currentUser.uid !== id) {
-      return redirect(`/users?id=${id}`, res);
-    }
     await dispatch(actions.retrieveUser(id));
     return { id };
   }
 
   render() {
-    const { id } = this.props;
+    const { currentUser, id } = this.props;
+
+    // Redirect if the user is not authorized
+    if (typeof window !== "undefined" && (!currentUser || currentUser.uid !== id)) {
+      return Router.push(`/users?id=${id}`);
+    }
+
     return (
       <Layout>
         <Row>
@@ -39,4 +42,11 @@ class UserEditPage extends React.Component {
   }
 }
 
-export default appEnhancer(UserEditPage);
+export default appEnhancer(
+  connect(
+    state => ({
+      currentUser: selectors.getCurrentUser(state),
+    }),
+    {},
+  )(UserEditPage),
+);

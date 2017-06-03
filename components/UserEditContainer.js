@@ -7,7 +7,7 @@ import * as selectors from "../reducers";
 import ReauthenticateModalContainer from "../components/ReauthenticateModalContainer";
 import type { ApiStatus, User } from "../types";
 import Status from "./Status";
-import { ButtonPrimary, FlexRow, Form, FormGroup, H3, Input, Label } from "./common";
+import { AuthLabel, ButtonPrimary, FlexRow, Form, FormGroup, H3, Input } from "./common";
 
 type Props = {|
   token: string,
@@ -42,12 +42,12 @@ class UserEditContainer extends React.Component {
         <H3>Edit User Profile</H3>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label>Email</Label>
+            <AuthLabel>Email</AuthLabel>
             <Input name="email" onChange={this.handleChange} value={email} />
           </FormGroup>
           {false &&
             <FormGroup>
-              <Label>Username</Label>
+              <AuthLabel>Username</AuthLabel>
               <Input name="username" onChange={this.handleChange} value={username} />
             </FormGroup>}
           <FlexRow>
@@ -70,8 +70,10 @@ class UserEditContainer extends React.Component {
     const { token, updateEmail, updateUser, user } = this.props;
     const { email, username } = this.state;
 
-    await updateEmail(email);
-    updateUser(user.id, { email, username }, token);
+    const result = await updateEmail(email);
+    if (result) {
+      updateUser(user.id, { email, username }, token);
+    }
   };
 }
 

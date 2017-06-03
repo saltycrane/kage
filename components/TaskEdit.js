@@ -1,9 +1,8 @@
 /* @flow */
-import format from "date-fns/format";
-import getTime from "date-fns/get_time";
 import React from "react";
 import styled from "styled-components";
 
+import { formatInputDate, getTimestamp } from "../lib/util";
 import type { ApiStatus, Task } from "../types";
 import Checkbox from "./Checkbox";
 import {
@@ -79,7 +78,7 @@ export default class TaskEdit extends React.Component {
                   onChange={this.handleDateChange}
                   tabIndex="-1"
                   type="date"
-                  value={completedAt ? format(completedAt, "YYYY-MM-DD") : ""}
+                  value={completedAt ? formatInputDate(completedAt) : ""}
                 />
               </Col>
               <Col md={6}>
@@ -115,7 +114,7 @@ export default class TaskEdit extends React.Component {
 
   handleCheckboxClick = () => {
     let { completed, completedAt } = this.state;
-    completedAt = completedAt || getTime(new Date());
+    completedAt = completedAt || Date.now();
 
     this.setState({
       completed: !completed,
@@ -124,8 +123,7 @@ export default class TaskEdit extends React.Component {
   };
 
   handleDateChange = (e: Object) => {
-    const completedAt = getTime(e.target.value);
-
+    const completedAt = getTimestamp(e.target.value);
     this.setState({
       completed: !!completedAt,
       completedAt,
