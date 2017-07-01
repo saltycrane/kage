@@ -11,19 +11,17 @@ export type Auth = {|
   uid: ?string,
 |};
 
-export type CurrentUser =
-  | {|
-      displayName: string,
-      email: string,
-      emailVerified: boolean,
-      isAnonymous: boolean,
-      photoURL: string,
-      providerId: ?string,
-      providerData: Array<*>,
-      token: string,
-      uid: string,
-    |}
-  | null;
+export type CurrentUser = {|
+  displayName: string,
+  email: string,
+  emailVerified: boolean,
+  isAnonymous: boolean,
+  photoURL: string,
+  providerId: ?string,
+  providerData: Array<*>,
+  token: string,
+  uid: string,
+|} | null;
 
 export type Task = {|
   completed?: boolean,

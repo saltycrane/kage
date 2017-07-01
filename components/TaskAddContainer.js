@@ -57,7 +57,9 @@ class TaskAddContainer extends React.Component {
           </Col>
           <Col sm={3} xs={12}>
             <FormGroup>
-              <TaskLabel>tags <Optional>(optional)</Optional></TaskLabel>
+              <TaskLabel>
+                tags <Optional>(optional)</Optional>
+              </TaskLabel>
               <Input
                 name="tagsString"
                 onChange={this.handleTextChange}

@@ -43,7 +43,13 @@ const TaskFilterContainer = ({ query, query: { status, tag }, tags, totalCount }
           />
         </Div>
         <Div mx={10} pb={20}>
-          <Link href="/"><A><Span bold fs={12}>reset all</Span></A></Link>
+          <Link href="/">
+            <A>
+              <Span bold fs={12}>
+                reset all
+              </Span>
+            </A>
+          </Link>
         </Div>
       </FlexRow>
     </div>

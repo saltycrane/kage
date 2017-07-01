@@ -12,7 +12,7 @@ type Props = {|
   tabIndex?: string,
 |};
 
-const Checkbox = ({ checked, children, color, onClick, style = {}, tabIndex }: Props) => (
+const Checkbox = ({ checked, children, color, onClick, style = {}, tabIndex }: Props) =>
   <div style={{ position: "relative", ...style }}>
     <div
       onClick={onClick}
@@ -25,7 +25,6 @@ const Checkbox = ({ checked, children, color, onClick, style = {}, tabIndex }: P
     <div style={{ marginLeft: 20 }}>
       {children}
     </div>
-  </div>
-);
+  </div>;
 
 export default Checkbox;

@@ -47,7 +47,9 @@ const Task = ({ onBump, onDelete, onEdit, onToggle, show, task }: Props) => {
               <IconWrapper title="edit (or double-click task)">
                 <PencilIcon onClick={onEdit} />
               </IconWrapper>
-              <IconWrapper title="delete"><XIcon onClick={onDelete} /></IconWrapper>
+              <IconWrapper title="delete">
+                <XIcon onClick={onDelete} />
+              </IconWrapper>
             </div>
           </FlexRow>
           <Checkbox
@@ -55,8 +57,13 @@ const Task = ({ onBump, onDelete, onEdit, onToggle, show, task }: Props) => {
             color={task.isDeleted ? "red" : undefined}
             onClick={onToggle}
           >
-            {task.tags && <Tags>{task.tags.join(" ")} - </Tags>}
-            <Text>{linkify(task.text)}</Text>
+            {task.tags &&
+              <Tags>
+                {task.tags.join(" ")} -{" "}
+              </Tags>}
+            <Text>
+              {linkify(task.text)}
+            </Text>
           </Checkbox>
         </CardBlock>
       </TaskCard>
@@ -70,7 +77,16 @@ function linkify(text) {
     return text;
   }
   const [, preText, url, space, postText] = result;
-  return <span>{preText}<A href={url} target="_blank">{url}</A>{space}{postText}</span>;
+  return (
+    <span>
+      {preText}
+      <A href={url} target="_blank">
+        {url}
+      </A>
+      {space}
+      {postText}
+    </span>
+  );
 }
 
 const A = styled(ACommon)`
@@ -79,9 +95,7 @@ const A = styled(ACommon)`
 const CardBlock = styled(CommonCardBlock)`
   padding: 12px 5px 15px 20px;
 `;
-const IconWrapper = styled.span`
-  margin-right: 15px;
-`;
+const IconWrapper = styled.span`margin-right: 15px;`;
 const Metadata = styled.div`
   color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : "#999")};
   font-size: 10px;
@@ -94,7 +108,8 @@ const Tags = styled.span`
 `;
 const TaskCard = styled(Card)`
   background-color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.04)" : "white")};
-  border-color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.121569)")};
+  border-color: ${props =>
+    props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.121569)"};
   margin-bottom: 15px;
 `;
 const Text = styled.span`

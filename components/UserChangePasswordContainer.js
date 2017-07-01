@@ -62,9 +62,12 @@ class UserChangePasswordContainer extends React.Component {
             />
           </FormGroup>
           <FlexRow>
-            <ButtonPrimary disabled={!this.isValid()} width={165}>Change password</ButtonPrimary>
+            <ButtonPrimary disabled={!this.isValid()} width={165}>
+              Change password
+            </ButtonPrimary>
             <div>
-              <Status status={reauthenticateStatus} /><Status status={updatePasswordStatus} />
+              <Status status={reauthenticateStatus} />
+              <Status status={updatePasswordStatus} />
             </div>
           </FlexRow>
         </Form>

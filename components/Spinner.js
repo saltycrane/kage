@@ -9,7 +9,10 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-const Spinner = () => <Container>{getBars()}</Container>;
+const Spinner = () =>
+  <Container>
+    {getBars()}
+  </Container>;
 
 function getBars() {
   let bars = [];

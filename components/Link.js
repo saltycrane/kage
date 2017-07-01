@@ -26,7 +26,11 @@ type Props = {
  */
 const Link = ({ children, href }: Props) => {
   const child = React.Children.only(children);
-  return <NextLink href={href}>{React.cloneElement(child, { href })}</NextLink>;
+  return (
+    <NextLink href={href}>
+      {React.cloneElement(child, { href })}
+    </NextLink>
+  );
 };
 
 export default Link;

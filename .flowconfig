@@ -1,7 +1,7 @@
 [ignore]
 .*/babel-plugin-transform-react-remove-prop-types/.*
 .*/fbjs/lib/.*
-.*/styled-components/lib/constructors/constructWithOptions.js.flow
+.*/mitt/src/index.js
 .*/styled-components/src/.*
 
 [libs]

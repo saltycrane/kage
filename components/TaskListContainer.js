@@ -34,9 +34,9 @@ export const TaskListContainer = ({
   status,
   updateTask,
   updatingId,
-}: Props) => (
+}: Props) =>
   <div>
-    {tasks.map(task => (
+    {tasks.map(task =>
       <div key={task.id} style={{ position: "relative" }}>
         {task.id === updatingId &&
           <Status
@@ -67,10 +67,9 @@ export const TaskListContainer = ({
           onToggle={() => updateTask(task.id, { completed: !task.completed }, auth)}
           show={task.id !== editingId}
         />
-      </div>
-    ))}
-  </div>
-);
+      </div>,
+    )}
+  </div>;
 
 export default connect(
   (state, ownProps) => ({

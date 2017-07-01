@@ -43,13 +43,11 @@ Benchmarking code was copied from [threehams](https://github.com/threehams)
     $ yarn benchmark
 
 ### Run webpack-bundle-analyzer
-This doesn't seem to give me the right results. If anyone has any tips, let me know.
 
     $ git clone https://github.com/saltycrane/kage.git
     $ cd kage
     $ yarn
-    $ yarn build
-    $ yarn bundle:view
+    $ yarn analyze
 
 ### Run Prettier
 

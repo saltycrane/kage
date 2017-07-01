@@ -9,7 +9,7 @@ type Props = {|
   isIndex?: boolean,
 |};
 
-const Layout = ({ children, isIndex = false, user }: Props) => (
+const Layout = ({ children, isIndex = false, user }: Props) =>
   <div>
     <NavHeaderContainer isIndex={isIndex} />
     <Container>
@@ -19,7 +19,6 @@ const Layout = ({ children, isIndex = false, user }: Props) => (
         </Col>
       </Row>
     </Container>
-  </div>
-);
+  </div>;
 
 export default Layout;

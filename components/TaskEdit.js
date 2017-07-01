@@ -100,7 +100,8 @@ export default class TaskEdit extends React.Component {
                 type="button"
               />
               <span>
-                <Button children="Cancel" onClick={onCancel} type="button" /><Span mr={10} />
+                <Button children="Cancel" onClick={onCancel} type="button" />
+                <Span mr={10} />
                 <ButtonPrimary children="Save" disabled={status.loading} />
               </span>
             </FlexRow>
@@ -163,6 +164,4 @@ const DateInput = styled(Input)`
 const TextInput = styled(Input)`
   margin-bottom: 10px;
 `;
-const Title = styled.p`
-  font-weight: 600;
-`;
+const Title = styled.p`font-weight: 600;`;

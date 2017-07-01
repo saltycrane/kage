@@ -55,7 +55,9 @@ class ReauthenticateModalContainer extends React.Component {
           </ModalBody>
           <ModalFooter>
             <Status status={status} />
-            <Button onClick={this.handleCancel} type="button">Cancel</Button>
+            <Button onClick={this.handleCancel} type="button">
+              Cancel
+            </Button>
             <ButtonPrimary>Save changes</ButtonPrimary>
           </ModalFooter>
         </Form>

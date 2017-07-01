@@ -16,9 +16,11 @@ const SignInWithProviderContainer = ({
   signInWithGithub,
   signInWithGoogle,
   signInWithTwitter,
-}: Props) => (
+}: Props) =>
   <div>
-    <Separator><Or>or</Or></Separator>
+    <Separator>
+      <Or>or</Or>
+    </Separator>
     <FlexRow center>
       <div>
         <Button onClick={signInWithGithub}>
@@ -31,17 +33,14 @@ const SignInWithProviderContainer = ({
         </Button>
       </div>
     </FlexRow>
-  </div>
-);
+  </div>;
 
 const Button = styled(CommonButton)`
   margin: 15px 15px 5px 0;
   padding-bottom: 7px;
   padding-top: 9px;
 `;
-const Icon = styled.img`
-  margin: -3px 14px 0 -4px;
-`;
+const Icon = styled.img`margin: -3px 14px 0 -4px;`;
 const Or = styled.span`
   background-color: white;
   padding: 0 10px;

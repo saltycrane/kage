@@ -10,15 +10,31 @@ type Props = {
 };
 
 const TaskCountContainer = ({ count, totalCount }: Props) => {
-  let text = <span>showing <b>{count}</b> of <b>{totalCount}</b> items</span>;
+  let text = (
+    <span>
+      showing <b>{count}</b> of <b>{totalCount}</b> items
+    </span>
+  );
   if (totalCount === 0) {
     text = null;
   } else if (totalCount === 1 && count === 1) {
-    text = <span>showing the <b>1</b> and only item</span>;
+    text = (
+      <span>
+        showing the <b>1</b> and only item
+      </span>
+    );
   } else if (count === totalCount) {
-    text = <span>showing all <b>{count}</b> items</span>;
+    text = (
+      <span>
+        showing all <b>{count}</b> items
+      </span>
+    );
   }
-  return <Container>{text}</Container>;
+  return (
+    <Container>
+      {text}
+    </Container>
+  );
 };
 
 const Container = styled.div`

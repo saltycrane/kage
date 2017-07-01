@@ -10,7 +10,7 @@ type Props = {|
   user: User,
 |};
 
-const UserProfileContainer = ({ user }: Props) => (
+const UserProfileContainer = ({ user }: Props) =>
   <div>
     <H3>User Profile</H3>
     {false &&
@@ -18,8 +18,7 @@ const UserProfileContainer = ({ user }: Props) => (
         <Label>Username</Label>
         <Input disabled name="username" value={user.username} />
       </FormGroup>}
-  </div>
-);
+  </div>;
 
 export default connect(
   (state, ownProps) => ({

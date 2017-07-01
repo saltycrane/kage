@@ -71,9 +71,15 @@ class SignInContainer extends React.Component {
                 value={password}
               />
             </FormGroup>
-            <p><Link href="/password-reset"><A>Forgot password?</A></Link></p>
+            <p>
+              <Link href="/password-reset">
+                <A>Forgot password?</A>
+              </Link>
+            </p>
             <FlexRow>
-              <ButtonPrimary disabled={status.loading} color="primary">Sign in</ButtonPrimary>
+              <ButtonPrimary disabled={status.loading} color="primary">
+                Sign in
+              </ButtonPrimary>
               <Status
                 status={status}
                 messages={{ loading: "Signing in...", success: "Signed in" }}

@@ -22,7 +22,9 @@ const TaskSorterContainer = ({ count, query, query: { sort } }: Props) => {
   }
   return (
     <Container>
-      <FlexRow right><TaskLabel>sort by</TaskLabel></FlexRow>
+      <FlexRow right>
+        <TaskLabel>sort by</TaskLabel>
+      </FlexRow>
       <SelectInput onChange={e => handleSortChange(e, query)} value={sort}>
         <option value="createdAt:asc">created (ascending)</option>
         <option value="createdAt:desc">created (descending)</option>
@@ -43,9 +45,7 @@ function handleSortChange(event, existingQuery) {
   Router.push("/?" + queryString.stringify(newQuery));
 }
 
-const Container = styled.div`
-  margin-bottom: 4px;
-`;
+const Container = styled.div`margin-bottom: 4px;`;
 const Spacer = styled.div`
   height: 40px;
   width: 100px;

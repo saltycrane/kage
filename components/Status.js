@@ -57,15 +57,21 @@ export default class Status extends React.Component {
     return (
       <Container style={style}>
         <StatusItem color="gray" show={status.loading} minWidth={minWidth}>
-          <SpinnerWrapper><Spinner /></SpinnerWrapper>
+          <SpinnerWrapper>
+            <Spinner />
+          </SpinnerWrapper>
           {messages.loading || "Loading"}
         </StatusItem>
         <StatusItem color="red" show={status.error} minWidth={minWidth}>
-          <Icon><XIcon2 /></Icon>
+          <Icon>
+            <XIcon2 />
+          </Icon>
           {messages.error || `Error: ${status.error || ""}`}
         </StatusItem>
         <StatusItem color="green" show={success} minWidth={minWidth}>
-          <Icon><CheckIcon /></Icon>
+          <Icon>
+            <CheckIcon />
+          </Icon>
           {messages.success || "Success"}
         </StatusItem>
       </Container>
