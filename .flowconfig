@@ -2,6 +2,7 @@
 .*/babel-plugin-transform-react-remove-prop-types/.*
 .*/fbjs/lib/.*
 .*/mitt/src/index.js
+.*/redux-promise-memo/src/.*
 .*/styled-components/src/.*
 
 [libs]

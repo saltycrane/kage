@@ -19,9 +19,9 @@ import {
  * Reducer
  */
 export default function apiStatus(state: Object = {}, action: Object) {
-  const { type, meta: { isApiMemo, originalType } = {} } = action;
+  const { type, meta: { isPromise, originalType } = {} } = action;
 
-  if (isApiMemo && type.endsWith("_INIT")) {
+  if (isPromise && type.endsWith("_INIT")) {
     return {
       ...state,
       [originalType]: {
@@ -30,7 +30,7 @@ export default function apiStatus(state: Object = {}, action: Object) {
         success: false,
       },
     };
-  } else if (isApiMemo && type.endsWith("_FAILURE")) {
+  } else if (isPromise && type.endsWith("_FAILURE")) {
     return {
       ...state,
       [originalType]: {
@@ -39,7 +39,7 @@ export default function apiStatus(state: Object = {}, action: Object) {
         success: false,
       },
     };
-  } else if (isApiMemo) {
+  } else if (isPromise) {
     // api SUCCESS case
     return {
       ...state,

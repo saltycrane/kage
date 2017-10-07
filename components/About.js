@@ -13,6 +13,7 @@ const About = () =>
       , <A href="https://github.com/zeit/next.js">Next.js</A>
       , <A href="https://facebook.github.io/react/">React</A>
       , <A href="https://github.com/reactjs/redux">Redux</A>
+      , <A href="https://github.com/saltycrane/redux-promise-memo">redux-promise-memo</A>
       , <A href="https://github.com/styled-components/styled-components">styled-components</A>
       , <A href="https://reactstrap.github.io/">Reactstrap</A>{" "}
       <A href="https://v4-alpha.getbootstrap.com/">(Bootstrap 4 alpha)</A>

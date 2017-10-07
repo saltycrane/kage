@@ -1,7 +1,6 @@
 /* @flow */
 import axios from "axios";
-
-import { memoize } from "../redux-api-memoization";
+import { memoize } from "redux-promise-memo";
 
 type Update = {|
   email: string,
@@ -26,16 +25,18 @@ export const createUser = (firebaseUser: any, username: string) => {
   };
 };
 
-export const retrieveUser = memoize((id: string) => ({
+const _retrieveUser = (id: string) => ({
   type: RETRIEVE_USER,
   getPromise: () => axios.get(`${BASE_URL}/${id}.json`),
   id,
-}));
+});
+export const retrieveUser = memoize(_retrieveUser, RETRIEVE_USER);
 
-export const retrieveUsers = memoize(() => ({
+const _retrieveUsers = () => ({
   type: RETRIEVE_USERS,
   getPromise: () => axios.get(`${BASE_URL}.json`),
-}));
+});
+export const retrieveUsers = memoize(_retrieveUsers, RETRIEVE_USERS);
 
 export const updateUser = (id: string, update: Update, token: string) => {
   const params = token ? { auth: token } : {};

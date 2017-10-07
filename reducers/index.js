@@ -1,24 +1,24 @@
 /* @flow */
+import { combineReducers } from "redux";
+import { createMemoReducer } from "redux-promise-memo";
+
 import apiStatus, * as apiStatusSelectors from "./apiStatus";
 import auth, * as authSelectors from "./auth";
 import tasks, * as tasksSelectors from "./tasks";
 import ui, * as uiSelectors from "./ui";
 import users, * as usersSelectors from "./users";
-import { reducer as apiMemoReducer } from "../redux-api-memoization";
 
 /**
  * Reducer
  */
-export default function reducer(state: Object = {}, action: Object) {
-  return {
-    apiMemo: apiMemoReducer(state.apiMemo, action),
-    apiStatus: apiStatus(state.apiStatus, action),
-    auth: auth(state.auth, action),
-    tasks: tasks(state.tasks, action),
-    ui: ui(state.ui, action),
-    users: users(state.users, action),
-  };
-}
+export default combineReducers({
+  _memo: createMemoReducer(),
+  apiStatus,
+  auth,
+  tasks,
+  ui,
+  users,
+});
 
 /**
  * Selectors

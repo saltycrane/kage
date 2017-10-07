@@ -1,6 +1,6 @@
 {
   "name": "kage",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "dependencies": {
     "axios": "0.16.2",
     "firebase": "3.9.0",
@@ -12,6 +12,7 @@
     "react-transition-group": "1.2.0",
     "reactstrap": "4.8.0",
     "redux": "3.7.1",
+    "redux-promise-memo": "0.1.0",
     "redux-thunk": "2.2.0",
     "reselect": "3.0.1",
     "styled-components": "2.1.0"

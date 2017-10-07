@@ -1,7 +1,7 @@
 /* @flow */
 import axios from "axios";
+import { memoize } from "redux-promise-memo";
 
-import { memoize } from "../redux-api-memoization";
 import type { Auth } from "../types";
 import { signInAnonymously } from "./auth";
 
@@ -92,7 +92,7 @@ export const editTask = (id: string) => ({
 
 // TODO: don't let uid be null to avoid the if check
 // or create a decorator to add auth
-export const retrieveTasks = memoize((auth: Auth) => {
+const _retrieveTasks = (auth: Auth) => {
   const { token, uid } = auth;
   const params = { auth: token };
   if (!uid) {
@@ -102,7 +102,8 @@ export const retrieveTasks = memoize((auth: Auth) => {
     type: RETRIEVE_TASKS,
     getPromise: () => axios.get(`${BASE_URL}/${uid}.json`, { params }),
   };
-});
+};
+export const retrieveTasks = memoize(_retrieveTasks, RETRIEVE_TASKS);
 
 export const updateTask = (id: string, update: Update, auth: Auth) => (dispatch: Function) => {
   const { token, uid } = auth;
