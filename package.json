@@ -8,11 +8,11 @@
     "query-string": "4.3.4",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "react-redux": "5.0.5",
+    "react-redux": "5.0.6",
     "react-transition-group": "1.2.0",
     "reactstrap": "4.8.0",
-    "redux": "3.7.1",
-    "redux-promise-memo": "0.1.0",
+    "redux": "3.7.2",
+    "redux-promise-memo": "0.2.1",
     "redux-thunk": "2.2.0",
     "reselect": "3.0.1",
     "styled-components": "2.1.0"
@@ -27,7 +27,7 @@
     "babel-preset-react": "6.24.1",
     "babel-register": "6.24.1",
     "benchmark": "2.1.4",
-    "cross-env": "5.0.1",
+    "cross-env": "5.0.5",
     "eslint": "3.19.0",
     "eslint-config-react-app": "1.0.5",
     "eslint-plugin-flowtype": "2.34.1",
@@ -36,8 +36,8 @@
     "eslint-plugin-react": "7.1.0",
     "flow-bin": "0.49.1",
     "prettier": "1.7.4",
-    "serve": "6.0.0",
-    "webpack-bundle-analyzer": "2.8.2"
+    "serve": "6.2.0",
+    "webpack-bundle-analyzer": "2.9.0"
   },
   "scripts": {
     "analyze": "cross-env ANALYZE=1 next build",
