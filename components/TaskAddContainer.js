@@ -74,11 +74,12 @@ class TaskAddContainer extends React.Component {
             Add task
           </ButtonPrimary>
           <div>
-            {!auth.uid &&
+            {!auth.uid && (
               <Status
                 status={signInStatus}
                 messages={{ loading: "Creating temporary account...", success: "Account created" }}
-              />}
+              />
+            )}
             <Status
               status={createStatus}
               messages={{ loading: "Saving...", success: "Task added" }}

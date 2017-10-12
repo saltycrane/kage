@@ -45,11 +45,12 @@ class UserEditContainer extends React.Component {
             <AuthLabel>Email</AuthLabel>
             <Input name="email" onChange={this.handleChange} value={email} />
           </FormGroup>
-          {false &&
+          {false && (
             <FormGroup>
               <AuthLabel>Username</AuthLabel>
               <Input name="username" onChange={this.handleChange} value={username} />
-            </FormGroup>}
+            </FormGroup>
+          )}
           <FlexRow>
             <ButtonPrimary width={165}>Save changes</ButtonPrimary>
             <div>

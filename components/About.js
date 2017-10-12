@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Link from "./Link";
 import { A, ButtonPrimary, H3 } from "./common";
 
-const About = () =>
+const About = () => (
   <div>
     <H3>About</H3>
     <P>
@@ -26,8 +26,11 @@ const About = () =>
     <Link href="/">
       <ButtonPrimary>Manage some tasks</ButtonPrimary>
     </Link>
-  </div>;
+  </div>
+);
 
-const P = styled.p`font-weight: 200;`;
+const P = styled.p`
+  font-weight: 200;
+`;
 
 export default About;

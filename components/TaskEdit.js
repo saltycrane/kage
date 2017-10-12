@@ -164,4 +164,6 @@ const DateInput = styled(Input)`
 const TextInput = styled(Input)`
   margin-bottom: 10px;
 `;
-const Title = styled.p`font-weight: 600;`;
+const Title = styled.p`
+  font-weight: 600;
+`;

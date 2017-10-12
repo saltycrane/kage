@@ -34,18 +34,19 @@ export const TaskListContainer = ({
   status,
   updateTask,
   updatingId,
-}: Props) =>
+}: Props) => (
   <div>
-    {tasks.map(task =>
+    {tasks.map(task => (
       <div key={task.id} style={{ position: "relative" }}>
-        {task.id === updatingId &&
+        {task.id === updatingId && (
           <Status
             messages={{ loading: "Saving...", success: "Saved!" }}
             minWidth="90px"
             onHide={clearAllStatus}
             status={status}
             style={{ position: "absolute", top: 5, left: 9, zIndex: 3 }}
-          />}
+          />
+        )}
         <Backdrop
           onClick={() => editTask(null)}
           style={{ zIndex: 1 }}
@@ -67,9 +68,10 @@ export const TaskListContainer = ({
           onToggle={() => updateTask(task.id, { completed: !task.completed }, auth)}
           show={task.id !== editingId}
         />
-      </div>,
-    )}
-  </div>;
+      </div>
+    ))}
+  </div>
+);
 
 export default connect(
   (state, ownProps) => ({

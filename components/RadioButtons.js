@@ -19,7 +19,7 @@ export default class RadioButtons extends React.Component {
 
     return (
       <div>
-        {options.map(([value, label]) =>
+        {options.map(([value, label]) => (
           <Button
             key={value}
             onClick={() => onChange(value)}
@@ -27,8 +27,8 @@ export default class RadioButtons extends React.Component {
             style={selected === value ? { border: `2px solid ${COLORS.primary}`, zIndex: 1 } : {}}
           >
             {label}
-          </Button>,
-        )}
+          </Button>
+        ))}
       </div>
     );
   }

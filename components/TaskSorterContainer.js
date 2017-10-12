@@ -45,7 +45,9 @@ function handleSortChange(event, existingQuery) {
   Router.push("/?" + queryString.stringify(newQuery));
 }
 
-const Container = styled.div`margin-bottom: 4px;`;
+const Container = styled.div`
+  margin-bottom: 4px;
+`;
 const Spacer = styled.div`
   height: 40px;
   width: 100px;

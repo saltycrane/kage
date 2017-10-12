@@ -30,11 +30,7 @@ const TaskCountContainer = ({ count, totalCount }: Props) => {
       </span>
     );
   }
-  return (
-    <Container>
-      {text}
-    </Container>
-  );
+  return <Container>{text}</Container>;
 };
 
 const Container = styled.div`

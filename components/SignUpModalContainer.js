@@ -66,11 +66,12 @@ class SignInUpModalContainer extends React.Component {
                 value={email}
               />
             </FormGroup>
-            {false &&
+            {false && (
               <FormGroup>
                 <AuthLabel>Username</AuthLabel>
                 <Input name="username" type="text" value={username} onChange={this.handleChange} />
-              </FormGroup>}
+              </FormGroup>
+            )}
             <FormGroup>
               <AuthLabel>Password</AuthLabel>
               <Input

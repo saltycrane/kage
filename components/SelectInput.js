@@ -5,15 +5,18 @@ import styled from "styled-components";
 import { Input as CommonInput } from "./common";
 import { ChevronDownIcon } from "./icons";
 
-const SelectInput = (props: Object) =>
+const SelectInput = (props: Object) => (
   <Container>
     <IconWrapper>
       <ChevronDownIcon />
     </IconWrapper>
     <Input size="sm" type="select" {...props} />
-  </Container>;
+  </Container>
+);
 
-const Container = styled.div`position: relative;`;
+const Container = styled.div`
+  position: relative;
+`;
 const IconWrapper = styled.div`
   pointer-events: none;
   position: absolute;

@@ -35,10 +35,7 @@ const Task = ({ onBump, onDelete, onEdit, onToggle, show, task }: Props) => {
           <FlexRow between vtop>
             <Metadata>
               Created: {formatDate(task.createdAt)}
-              {task.completedAt &&
-                <Span ml={20}>
-                  Completed: {formatDate(task.completedAt)}
-                </Span>}
+              {task.completedAt && <Span ml={20}>Completed: {formatDate(task.completedAt)}</Span>}
             </Metadata>
             <div>
               <ToBeIcon onClick={onBump} title="bump the updated timestamp for sorting purposes">
@@ -57,13 +54,8 @@ const Task = ({ onBump, onDelete, onEdit, onToggle, show, task }: Props) => {
             color={task.isDeleted ? "red" : undefined}
             onClick={onToggle}
           >
-            {task.tags &&
-              <Tags>
-                {task.tags.join(" ")} -{" "}
-              </Tags>}
-            <Text>
-              {linkify(task.text)}
-            </Text>
+            {task.tags && <Tags>{task.tags.join(" ")} - </Tags>}
+            <Text>{linkify(task.text)}</Text>
           </Checkbox>
         </CardBlock>
       </TaskCard>
@@ -90,12 +82,14 @@ function linkify(text) {
 }
 
 const A = styled(ACommon)`
-  ${props => props.theme.isDeleted && "color: rgba(255, 0, 0, 0.8) !important;"}
+  ${props => props.theme.isDeleted && "color: rgba(255, 0, 0, 0.8) !important;"};
 `;
 const CardBlock = styled(CommonCardBlock)`
   padding: 12px 5px 15px 20px;
 `;
-const IconWrapper = styled.span`margin-right: 15px;`;
+const IconWrapper = styled.span`
+  margin-right: 15px;
+`;
 const Metadata = styled.div`
   color: ${props => (props.theme.isDeleted ? "rgba(255, 0, 0, 0.8)" : "#999")};
   font-size: 10px;

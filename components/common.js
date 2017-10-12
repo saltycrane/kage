@@ -27,25 +27,22 @@ export { RSLabel as Label };
  * Utilities
  */
 export const base = css`
-  ${props => props.bold && "font-weight: bold;"}
-  ${props => props.fs && "font-size: " + props.fs + "px;"}
-  ${props => props.fw && "font-weight: " + props.fw + ";"}
-  ${props => props.ml && "margin-left: " + props.ml + "px;"}
-  ${props => props.mr && "margin-right: " + props.mr + "px;"}
-  ${props => props.mt && "margin-top: " + props.mt + "px;"}
-  ${props => props.mb && "margin-bottom: " + props.mb + "px;"}
-  ${props =>
-    props.mx &&
-    css`
-    margin-left: ${props.mx}px;
-    margin-right: ${props.mx}px;
-  `}
-  ${props => props.pl && "padding-left: " + props.pl + "px;"}
-  ${props => props.pr && "padding-right: " + props.pr + "px;"}
-  ${props => props.pt && "padding-top: " + props.pt + "px;"}
-  ${props => props.pb && "padding-bottom: " + props.pb + "px;"}
-  ${props => props.w && "width: " + props.w + "px;"}
-  ${props => props.zi && "z-index: " + props.zi + ";"}
+  ${props => props.bold && "font-weight: bold;"} ${props =>
+      props.fs && "font-size: " + props.fs + "px;"} ${props =>
+      props.fw && "font-weight: " + props.fw + ";"} ${props =>
+      props.ml && "margin-left: " + props.ml + "px;"} ${props =>
+      props.mr && "margin-right: " + props.mr + "px;"} ${props =>
+      props.mt && "margin-top: " + props.mt + "px;"} ${props =>
+      props.mb && "margin-bottom: " + props.mb + "px;"} ${props =>
+      props.mx &&
+      css`
+        margin-left: ${props.mx}px;
+        margin-right: ${props.mx}px;
+      `} ${props => props.pl && "padding-left: " + props.pl + "px;"} ${props =>
+      props.pr && "padding-right: " + props.pr + "px;"} ${props =>
+      props.pt && "padding-top: " + props.pt + "px;"} ${props =>
+      props.pb && "padding-bottom: " + props.pb + "px;"} ${props =>
+      props.w && "width: " + props.w + "px;"} ${props => props.zi && "z-index: " + props.zi + ";"};
 `;
 
 /**
@@ -73,8 +70,7 @@ export const ButtonPrimary = styled(RSButton)`
   border-radius: 0;
   color: white;
   height: 38px;
-  ${props => props.width && "width: " + props.width + "px;"}
-  &:hover {
+  ${props => props.width && "width: " + props.width + "px;"} &:hover {
     background-color: #e6e6e6 !important;
     border-color: #adadad !important;
   }
@@ -82,10 +78,12 @@ export const ButtonPrimary = styled(RSButton)`
 
 export const Card = styled(RSCard)`
   border-radius: 0;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 `;
 
-export const Div = styled.div`${base};`;
+export const Div = styled.div`
+  ${base};
+`;
 
 export const FlexCol = styled.div`
   ${base} display: flex;
@@ -106,9 +104,13 @@ export const FlexRow = styled.div`
       props.vtop && "align-items: flex-start;"} ${props => props.wrap && "flex-wrap: wrap;"};
 `;
 
-export const H3 = styled.h3`margin-bottom: 20px;`;
+export const H3 = styled.h3`
+  margin-bottom: 20px;
+`;
 
-export const H4 = styled.h4`margin-bottom: 15px;`;
+export const H4 = styled.h4`
+  margin-bottom: 15px;
+`;
 
 export const Input = styled(RSInput)`
   border-radius: 0;
@@ -122,7 +124,9 @@ export const Navbar = styled(RSNavbar)`
   margin-bottom: 15px;
 `;
 
-export const Span = styled.span`${base};`;
+export const Span = styled.span`
+  ${base};
+`;
 
 export const TaskLabel = styled(RSLabel)`
   display: block;

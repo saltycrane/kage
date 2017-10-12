@@ -23,15 +23,13 @@ const NavHeaderContainer = ({ currentUser, isIndex = false, showModal, signOut }
     const { email, providerId, uid } = currentUser;
     authLinks = (
       <FlexRow vbaseline wrap>
-        {providerId === "password"
-          ? <Link href={`/users/edit?id=${uid}`}>
-              <UserEmailLink>
-                {email}
-              </UserEmailLink>
-            </Link>
-          : <UserEmail>
-              {email}
-            </UserEmail>}
+        {providerId === "password" ? (
+          <Link href={`/users/edit?id=${uid}`}>
+            <UserEmailLink>{email}</UserEmailLink>
+          </Link>
+        ) : (
+          <UserEmail>{email}</UserEmail>
+        )}
         <FakeA onClick={() => signOut() && Router.push("/")}>Sign Out</FakeA>
       </FlexRow>
     );
@@ -48,13 +46,15 @@ const NavHeaderContainer = ({ currentUser, isIndex = false, showModal, signOut }
     <Navbar>
       <Container>
         <FlexRow between wrap>
-          {isIndex
-            ? <Link href="/about">
-                <LogoLink outline>Kage</LogoLink>
-              </Link>
-            : <Link href="/">
-                <LogoLink outline>Kage</LogoLink>
-              </Link>}
+          {isIndex ? (
+            <Link href="/about">
+              <LogoLink outline>Kage</LogoLink>
+            </Link>
+          ) : (
+            <Link href="/">
+              <LogoLink outline>Kage</LogoLink>
+            </Link>
+          )}
           {authLinks}
         </FlexRow>
       </Container>
@@ -83,7 +83,9 @@ const aCss = css`
     color: #ddd !important;
   }
 `;
-const FakeA = styled.span`${aCss};`;
+const FakeA = styled.span`
+  ${aCss};
+`;
 const LogoLink = styled(Button)`
   color: #fff !important;
   font-size: 14px;
