@@ -1,5 +1,5 @@
-// flow-typed signature: 09272b82e4d7a497eb3ffd12dd130407
-// flow-typed version: d28912a036/axios_v0.15.x/flow_>=v0.28.x
+// flow-typed signature: 783541c5bb930cc2cb39610705a4adc1
+// flow-typed version: d84de54b07/axios_v0.16.x/flow_>=v0.25.x
 
 declare module 'axios' {
   declare interface ProxyConfig {
@@ -60,12 +60,12 @@ declare module 'axios' {
   declare class AxiosXHR<T> {
     config: AxiosXHRConfig<T>;
     data: T;
-    headers: Object;
+    headers?: Object;
     status: number;
     statusText: string,
     request: http$ClientRequest | XMLHttpRequest
   }
-  declare type $AxiosXHR<T> = $AxiosXHR<T>;
+  declare type $AxiosXHR<T> = AxiosXHR<T>;
   declare class AxiosInterceptorIdent extends String {}
   declare class AxiosRequestInterceptor<T> {
     use(
@@ -77,7 +77,7 @@ declare module 'axios' {
   declare class AxiosResponseInterceptor<T> {
     use(
       successHandler: ?(response: AxiosXHR<T>) => mixed,
-      errorHandler: ?(error: mixed) => mixed,
+      errorHandler: ?(error: $AxiosError<any>) => mixed,
     ): AxiosInterceptorIdent;
     eject(ident: AxiosInterceptorIdent): void;
   }
@@ -96,6 +96,7 @@ declare module 'axios' {
       request: AxiosRequestInterceptor<mixed>,
       response: AxiosResponseInterceptor<mixed>,
     };
+    defaults: AxiosXHRConfig<*> & { headers: Object };
   }
 
   declare class AxiosError<T> extends Error {
