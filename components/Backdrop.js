@@ -7,7 +7,12 @@ type Props = {|
   style?: Object,
 |};
 
-export default class Backdrop extends React.Component<Props, $FlowFixMeState> {
+type State = {|
+  mounted: boolean,
+  opacity: number,
+|};
+
+export default class Backdrop extends React.Component<Props, State> {
   state = { mounted: false, opacity: 0 };
   DURATION = 300;
 

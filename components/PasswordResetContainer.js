@@ -14,7 +14,11 @@ type Props = {|
   status: ApiStatus,
 |};
 
-class PasswordResetContainer extends React.Component<Props, $FlowFixMeState> {
+type State = {|
+  email: string,
+|};
+
+class PasswordResetContainer extends React.Component<Props, State> {
   state = {
     email: "",
   };

@@ -26,7 +26,11 @@ type Props = {|
   status: ApiStatus,
 |};
 
-class ReauthenticateModalContainer extends React.Component<Props, $FlowFixMeState> {
+type State = {|
+  password: string,
+|};
+
+class ReauthenticateModalContainer extends React.Component<Props, State> {
   state = {
     password: "",
   };

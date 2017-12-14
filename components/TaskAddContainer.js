@@ -26,7 +26,13 @@ type Props = {|
   token: string | null,
 |};
 
-class TaskAddContainer extends React.Component<Props, $FlowFixMeState> {
+type State = {|
+  isValid: boolean,
+  tagsString: string,
+  text: string,
+|};
+
+class TaskAddContainer extends React.Component<Props, State> {
   textInput: HTMLElement;
 
   state = {
@@ -76,7 +82,10 @@ class TaskAddContainer extends React.Component<Props, $FlowFixMeState> {
             {!auth.uid && (
               <Status
                 status={signInStatus}
-                messages={{ loading: "Creating temporary account...", success: "Account created" }}
+                messages={{
+                  loading: "Creating temporary account...",
+                  success: "Account created",
+                }}
               />
             )}
             <Status

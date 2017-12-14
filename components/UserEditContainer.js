@@ -18,10 +18,13 @@ type Props = {|
   user: User,
 |};
 
-class UserEditContainer extends React.Component<Props, {|
-  email: string,
-  username: string,
-|}> {
+class UserEditContainer extends React.Component<
+  Props,
+  {|
+    email: string,
+    username: string,
+  |},
+> {
   constructor(props: Props) {
     super(props);
     this.state = {

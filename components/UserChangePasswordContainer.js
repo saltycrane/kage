@@ -21,7 +21,13 @@ type Props = {|
   updatePasswordStatus: ApiStatus,
 |};
 
-class UserChangePasswordContainer extends React.Component<Props, $FlowFixMeState> {
+type State = {|
+  passwordOld: string,
+  passwordNew: string,
+  passwordConfirm: string,
+|};
+
+class UserChangePasswordContainer extends React.Component<Props, State> {
   state = INITIAL_STATE;
 
   render() {

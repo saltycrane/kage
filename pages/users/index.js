@@ -7,7 +7,11 @@ import UserProfileContainer from "../../components/UserProfileContainer";
 import { Col, Row } from "../../components/common";
 import appEnhancer from "../../lib/appEnhancer";
 
-class UserProfilePage extends React.Component<$FlowFixMeProps> {
+type Props = {|
+  id: string,
+|};
+
+class UserProfilePage extends React.Component<Props> {
   static async getInitialProps({ dispatch, query: { id } }) {
     await dispatch(actions.retrieveUser(id));
     return { id };

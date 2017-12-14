@@ -18,7 +18,13 @@ const DEFAULT_QUERY = {
   tag: "all",
 };
 
-class TaskListPage extends React.Component<$FlowFixMeProps> {
+type Props = {|
+  url: {
+    query: Object,
+  },
+|};
+
+class TaskListPage extends React.Component<Props> {
   render() {
     const query = { ...DEFAULT_QUERY, ...this.props.url.query };
 

@@ -31,7 +31,13 @@ type Props = {|
   storeAuth: (firebaseUser: any) => Object,
 |};
 
-class SignInUpModalContainer extends React.Component<Props, $FlowFixMeState> {
+type State = {|
+  email: string,
+  password: string,
+  username: string,
+|};
+
+class SignInUpModalContainer extends React.Component<Props, State> {
   email: HTMLElement;
 
   state = {

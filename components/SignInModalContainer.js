@@ -28,7 +28,12 @@ type Props = {|
   status: ApiStatus,
 |};
 
-class SignInContainer extends React.Component<Props, $FlowFixMeState> {
+type State = {|
+  email: string,
+  password: string,
+|};
+
+class SignInContainer extends React.Component<Props, State> {
   email: HTMLElement;
 
   state = {

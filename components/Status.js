@@ -21,7 +21,11 @@ type Props = {|
   |},
 |};
 
-export default class Status extends React.Component<Props, $FlowFixMeState> {
+type State = {|
+  success: boolean,
+|};
+
+export default class Status extends React.Component<Props, State> {
   timeout: number;
 
   state = {

@@ -10,8 +10,14 @@ import UserEditContainer from "../../components/UserEditContainer";
 import { Col, Row } from "../../components/common";
 import appEnhancer from "../../lib/appEnhancer";
 import * as selectors from "../../reducers";
+import type { CurrentUser } from "../../types";
 
-class UserEditPage extends React.Component<$FlowFixMeProps> {
+type Props = {|
+  currentUser: CurrentUser,
+  id: string,
+|};
+
+class UserEditPage extends React.Component<Props> {
   static async getInitialProps({ dispatch, getState, query: { id }, res }) {
     await dispatch(actions.retrieveUser(id));
     return { id };

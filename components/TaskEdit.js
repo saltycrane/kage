@@ -28,7 +28,7 @@ type Props = {|
   task: Task,
 |};
 
-export default class TaskEdit extends React.Component<Props, $FlowFixMeState> {
+export default class TaskEdit extends React.Component<Props, Object> {
   state = {};
 
   componentWillReceiveProps(nextProps: Props) {
