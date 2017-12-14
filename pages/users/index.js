@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 
 import * as actions from "../../actions";
 import Layout from "../../components/Layout";
@@ -7,7 +7,7 @@ import UserProfileContainer from "../../components/UserProfileContainer";
 import { Col, Row } from "../../components/common";
 import appEnhancer from "../../lib/appEnhancer";
 
-class UserProfilePage extends React.Component {
+class UserProfilePage extends React.Component<$FlowFixMeProps> {
   static async getInitialProps({ dispatch, query: { id } }) {
     await dispatch(actions.retrieveUser(id));
     return { id };

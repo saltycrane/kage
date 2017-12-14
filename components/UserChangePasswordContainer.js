@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 
 import * as actions from "../actions";
@@ -21,8 +21,7 @@ type Props = {|
   updatePasswordStatus: ApiStatus,
 |};
 
-class UserChangePasswordContainer extends React.Component {
-  props: Props;
+class UserChangePasswordContainer extends React.Component<Props, $FlowFixMeState> {
   state = INITIAL_STATE;
 
   render() {

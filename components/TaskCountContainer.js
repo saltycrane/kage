@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 import * as selectors from "../reducers";
 import styled from "styled-components";

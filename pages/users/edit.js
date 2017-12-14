@@ -1,6 +1,6 @@
 /* @flow */
 import Router from "next/router";
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 
 import * as actions from "../../actions";
@@ -11,7 +11,7 @@ import { Col, Row } from "../../components/common";
 import appEnhancer from "../../lib/appEnhancer";
 import * as selectors from "../../reducers";
 
-class UserEditPage extends React.Component {
+class UserEditPage extends React.Component<$FlowFixMeProps> {
   static async getInitialProps({ dispatch, getState, query: { id }, res }) {
     await dispatch(actions.retrieveUser(id));
     return { id };

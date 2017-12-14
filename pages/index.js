@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 
 import Layout from "../components/Layout";
 import SignInModalContainer from "../components/SignInModalContainer";
@@ -18,7 +18,7 @@ const DEFAULT_QUERY = {
   tag: "all",
 };
 
-class TaskListPage extends React.Component {
+class TaskListPage extends React.Component<$FlowFixMeProps> {
   render() {
     const query = { ...DEFAULT_QUERY, ...this.props.url.query };
 

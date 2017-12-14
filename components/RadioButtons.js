@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 
 import { COLORS } from "../constants";
@@ -11,9 +11,7 @@ type Props = {
   selected: string,
 };
 
-export default class RadioButtons extends React.Component {
-  props: Props;
-
+export default class RadioButtons extends React.Component<Props> {
   render() {
     const { onChange, options, selected } = this.props;
 

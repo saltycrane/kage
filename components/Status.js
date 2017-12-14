@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 
 import Spinner from "./Spinner";
@@ -21,8 +21,7 @@ type Props = {|
   |},
 |};
 
-export default class Status extends React.Component {
-  props: Props;
+export default class Status extends React.Component<Props, $FlowFixMeState> {
   timeout: number;
 
   state = {

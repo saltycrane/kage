@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 
 import * as actions from "../actions";
@@ -18,13 +18,10 @@ type Props = {|
   user: User,
 |};
 
-class UserEditContainer extends React.Component {
-  props: Props;
-  state: {|
-    email: string,
-    username: string,
-  |};
-
+class UserEditContainer extends React.Component<Props, {|
+  email: string,
+  username: string,
+|}> {
   constructor(props: Props) {
     super(props);
     this.state = {

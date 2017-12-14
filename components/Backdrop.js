@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 
 type Props = {|
   onClick?: Function,
@@ -7,9 +7,7 @@ type Props = {|
   style?: Object,
 |};
 
-export default class Backdrop extends React.Component {
-  props: Props;
-
+export default class Backdrop extends React.Component<Props, $FlowFixMeState> {
   state = { mounted: false, opacity: 0 };
   DURATION = 300;
 

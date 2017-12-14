@@ -6,7 +6,7 @@
  * https://github.com/chenglou/react-spinner/blob/35931a7d9586a42cacb293100669552a452362b3/react-spinner.css
  * https://github.com/styled-components/styled-components/blob/18fe1543c2aeb88ee62c22229e22e06e91aa1091/README.md#animations
  */
-import React from "react";
+import * as React from "react";
 import styled, { keyframes } from "styled-components";
 
 const Spinner = () => <Container>{getBars()}</Container>;

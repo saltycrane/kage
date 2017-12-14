@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import styled, { ThemeProvider } from "styled-components";
 
 import { COLORS } from "../constants";

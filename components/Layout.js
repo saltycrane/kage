@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 
 import NavHeaderContainer from "../components/NavHeaderContainer";
 import { Col, Container, Row } from "./common";

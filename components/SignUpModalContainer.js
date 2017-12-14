@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 
 import * as actions from "../actions";
@@ -31,8 +31,7 @@ type Props = {|
   storeAuth: (firebaseUser: any) => Object,
 |};
 
-class SignInUpModalContainer extends React.Component {
-  props: Props;
+class SignInUpModalContainer extends React.Component<Props, $FlowFixMeState> {
   email: HTMLElement;
 
   state = {

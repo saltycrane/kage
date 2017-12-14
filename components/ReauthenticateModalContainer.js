@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 
 import * as actions from "../actions";
@@ -26,9 +26,7 @@ type Props = {|
   status: ApiStatus,
 |};
 
-class ReauthenticateModalContainer extends React.Component {
-  props: Props;
-
+class ReauthenticateModalContainer extends React.Component<Props, $FlowFixMeState> {
   state = {
     password: "",
   };

@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 
 import { formatInputDate, getTimestamp } from "../lib/util";
@@ -28,9 +28,7 @@ type Props = {|
   task: Task,
 |};
 
-export default class TaskEdit extends React.Component {
-  props: Props;
-
+export default class TaskEdit extends React.Component<Props, $FlowFixMeState> {
   state = {};
 
   componentWillReceiveProps(nextProps: Props) {
