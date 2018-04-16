@@ -27,29 +27,33 @@ export { RSLabel as Label };
  * Utilities
  */
 export const base = css`
-  ${props => props.bold && "font-weight: bold;"} ${props =>
-      props.fs && "font-size: " + props.fs + "px;"} ${props =>
-      props.fw && "font-weight: " + props.fw + ";"} ${props =>
-      props.ml && "margin-left: " + props.ml + "px;"} ${props =>
-      props.mr && "margin-right: " + props.mr + "px;"} ${props =>
-      props.mt && "margin-top: " + props.mt + "px;"} ${props =>
-      props.mb && "margin-bottom: " + props.mb + "px;"} ${props =>
-      props.mx &&
-      css`
-        margin-left: ${props.mx}px;
-        margin-right: ${props.mx}px;
-      `} ${props => props.pl && "padding-left: " + props.pl + "px;"} ${props =>
-      props.pr && "padding-right: " + props.pr + "px;"} ${props =>
-      props.pt && "padding-top: " + props.pt + "px;"} ${props =>
-      props.pb && "padding-bottom: " + props.pb + "px;"} ${props =>
-      props.w && "width: " + props.w + "px;"} ${props => props.zi && "z-index: " + props.zi + ";"};
+  ${props => props.bold && "font-weight: bold;"}
+  ${props => props.fs && "font-size: " + props.fs + "px;"}
+  ${props => props.fw && "font-weight: " + props.fw + ";"}
+  ${props => props.ml && "margin-left: " + props.ml + "px;"}
+  ${props => props.mr && "margin-right: " + props.mr + "px;"}
+  ${props => props.mt && "margin-top: " + props.mt + "px;"}
+  ${props => props.mb && "margin-bottom: " + props.mb + "px;"}
+  ${props =>
+    props.mx &&
+    css`
+      margin-left: ${props.mx}px;
+      margin-right: ${props.mx}px;
+    `}
+  ${props => props.pl && "padding-left: " + props.pl + "px;"}
+  ${props => props.pr && "padding-right: " + props.pr + "px;"}
+  ${props => props.pt && "padding-top: " + props.pt + "px;"}
+  ${props => props.pb && "padding-bottom: " + props.pb + "px;"}
+  ${props => props.w && "width: " + props.w + "px;"}
+  ${props => props.zi && "z-index: " + props.zi + ";"}
 `;
 
 /**
  * Components
  */
 export const A = styled.a`
-  ${base} color: ${COLORS.primary} !important;
+  ${base}
+  color: ${COLORS.primary} !important;
   cursor: pointer;
 `;
 
@@ -94,14 +98,15 @@ export const FlexCol = styled.div`
 export const FlexRow = styled.div`
   ${base} display: flex;
   flex-direction: row;
-  ${props => props.around && "justify-content: space-around;"} ${props =>
-      props.between && "justify-content: space-between;"} ${props =>
-      props.center && "justify-content: center;"} ${props =>
-      props.right && "justify-content: flex-end;"} ${props =>
-      props.vbaseline && "align-items: baseline;"} ${props =>
-      props.vbottom && "align-items: flex-end;"} ${props =>
-      props.vcenter && "align-items: center;"} ${props =>
-      props.vtop && "align-items: flex-start;"} ${props => props.wrap && "flex-wrap: wrap;"};
+  ${props => props.around && "justify-content: space-around;"}
+  ${props => props.between && "justify-content: space-between;"}
+  ${props => props.center && "justify-content: center;"}
+  ${props => props.right && "justify-content: flex-end;"}
+  ${props => props.vbaseline && "align-items: baseline;"}
+  ${props => props.vbottom && "align-items: flex-end;"}
+  ${props => props.vcenter && "align-items: center;"}
+  ${props => props.vtop && "align-items: flex-start;"}
+  ${props => props.wrap && "flex-wrap: wrap;"}
 `;
 
 export const H3 = styled.h3`

@@ -40,7 +40,9 @@ function byId(state: Object = {}, action: Object) {
       };
     // if update fails, revert back to previous state
     case `${UPDATE_TASK}_FAILURE`: {
-      const { prev: { [action.id]: prevTask, ...prevTasks } } = state;
+      const {
+        prev: { [action.id]: prevTask, ...prevTasks },
+      } = state;
       return {
         ...state,
         [action.id]: prevTask,

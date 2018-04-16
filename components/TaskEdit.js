@@ -33,7 +33,9 @@ export default class TaskEdit extends React.Component<Props, Object> {
 
   componentWillReceiveProps(nextProps: Props) {
     if (!this.props.show && nextProps.show) {
-      const { task: { tags } } = nextProps;
+      const {
+        task: { tags },
+      } = nextProps;
       this.setState({
         completed: !!nextProps.task.completed,
         completedAt: nextProps.task.completedAt || null,
